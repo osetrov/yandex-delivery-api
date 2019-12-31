@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name        = 'yandex-delivery-api'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.date        = '2019-12-31'
   s.summary     = "Yandex delivery api"
   s.description = ""
   s.authors     = ["Pavel Osetrov"]
   s.email       = 'pavel.osetrov@me.com'
-  s.files       = ["lib/yandex_delivery.rb"]
+  s.files       = ['{lib}/**/*', 'LICENSE', 'README.md']
   s.homepage    = 'https://github.com/osetrov/yandex-delivery-api'
   s.license       = 'MIT'
 
