@@ -6,7 +6,8 @@ Gem::Specification.new do |s|
   s.description = ""
   s.authors     = ["Pavel Osetrov"]
   s.email       = 'pavel.osetrov@me.com'
-  s.files       = ['{lib}/**/*', 'LICENSE', 'README.md']
+  s.files = Dir['lib/**/*', 'LICENSE', 'README.md']
+
   s.homepage    = 'https://github.com/osetrov/yandex-delivery-api'
   s.license       = 'MIT'
 
