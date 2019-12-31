@@ -2,7 +2,7 @@
 
 Добавьте в Gemfile:
 
-    gem 'yandex-delivery-api'
+    gem 'yandex-delivery-api', github: 'osetrov/yandex-delivery-api'
 
 и запустите `bundle install`.
 
@@ -15,7 +15,7 @@
 https://delivery.yandex.ru/integration/index
 
 Все возможные запросы:
-https://tech.yandex.ru/delivery/doc/dg/reference/update-order-docpage/
+https://tech.yandex.ru/delivery/doc/dg/about-docpage/
 
 Например "Получить варианты доставки":
 ```erb
