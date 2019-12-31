@@ -1,6 +1,6 @@
 YandexDelivery.setup do |config|
-  if File.exist?('config/yandex.yml')
-    template = ERB.new(File.new('config/yandex.yml').read)
+  if File.exist?('config/yandex_delivery.yml')
+    template = ERB.new(File.new('config/yandex_delivery.yml').read)
     processed = YAML.safe_load(template.result(binding))
 
     processed['YANDEX_DELIVERY_API_KEY'].each do |k, v|

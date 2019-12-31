@@ -5,7 +5,7 @@ module YandexDelivery
     source_root File.expand_path('templates', __dir__)
 
     def generate_install
-      copy_file 'yandex.yml', 'config/yandex.yml'
+      copy_file 'yandex_delivery.yml', 'config/yandex_delivery.yml'
       copy_file 'yandex_delivery.rb', 'config/initializers/yandex_delivery.rb'
     end
   end

@@ -10,7 +10,7 @@
 
     rails g yandex_delivery:install
 
-в файл `config/yandex.yml` вставьте ваши данные из настоек яндекс доставки:
+в файл `config/yandex_delivery.yml` вставьте ваши данные из настоек яндекс доставки:
 
 https://delivery.yandex.ru/integration/index
 
