@@ -1,3 +1,5 @@
+require 'yandex_delivery'
+
 YandexDelivery.setup do |config|
   if File.exist?('config/yandex_delivery.yml')
     template = ERB.new(File.new('config/yandex_delivery.yml').read)
