@@ -26,7 +26,7 @@ module YandexDelivery
     end
 
     def register(name, value, type = nil)
-      class_attribute "#{name}_setting"
+      cattr_accessor "#{name}_setting".to_sym
 
       add_reader(name)
       add_writer(name, type)
