@@ -30,7 +30,7 @@ params = {
     :order_cost => 1000
 }
 
-YandexDelivery::get_deliveries params
+YandexDelivery::get_delivery_list params
 ```
 
 secret_key, client_id, sender_id указывать в параметрах не обязательно.
