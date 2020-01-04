@@ -17,7 +17,7 @@ https://delivery.yandex.ru/integration/index
 Все возможные запросы:
 https://tech.yandex.ru/delivery/doc/dg/about-docpage/
 
-Например "Получить список служб доставки":
+Например "Получить варианты доставки":
 ```erb
 params = {
     :city_from => 'Санкт-Петербург',
@@ -30,7 +30,7 @@ params = {
     :order_cost => 1000
 }
 
-YandexDelivery::get_deliveries params
+YandexDelivery::search_delivery_list params
 ```
 
 secret_key, client_id, sender_id указывать в параметрах не обязательно.
