@@ -17,7 +17,7 @@ https://delivery.yandex.ru/integration/index
 Все возможные запросы:
 https://tech.yandex.ru/delivery/doc/dg/about-docpage/
 
-Например "Получить варианты доставки":
+Например "Получить список служб доставки":
 ```erb
 params = {
     :city_from => 'Санкт-Петербург',
