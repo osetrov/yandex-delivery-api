@@ -35,7 +35,11 @@ module YandexDelivery
     def post_values params
       return params unless params.kind_of?(Array) || params.kind_of?(Hash)
       params.sort.map{|k,v|
-        post_values(v)
+        if params.kind_of?(Array)
+          post_values(k)
+        else
+          post_values(v)
+        end
       }.join('')
     end
 
