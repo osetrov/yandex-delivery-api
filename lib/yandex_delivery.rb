@@ -1,5 +1,18 @@
 module YandexDelivery
 
+  def request method_name, params={}
+    params = build_params method_name, params
+    result = RestClient.post "https://delivery.yandex.ru/api/last/#{method_name.to_s.camelize(:lower)}", params
+    JSON.parse(result)
+  end
+
+  def build_params method_name, params={}
+    params[:client_id] = YandexDelivery.client["id"]
+    params[:sender_id] = params[:sender_id] || YandexDelivery.senders.first["id"]
+    params[:secret_key] = Digest::MD5.hexdigest("#{post_values(params)}#{YandexDelivery.send("#{method_name}_key")}")
+    params
+  end
+
   class << self
 
     def setup
@@ -15,12 +28,22 @@ module YandexDelivery
     def build_params method_name, params={}
       params[:client_id] = YandexDelivery.client["id"]
       params[:sender_id] = params[:sender_id] || YandexDelivery.senders.first["id"]
-      params[:secret_key] = Digest::MD5.hexdigest("#{params.sort.map{|k,v| v}.join('')}#{YandexDelivery.send("#{method_name}_key")}")
+      params[:secret_key] = Digest::MD5.hexdigest("#{post_values(params)}#{YandexDelivery.send("#{method_name}_key")}")
       params
+    end
+
+    def post_values params
+      return params unless params.kind_of?(Array) || params.kind_of?(Hash)
+      params.sort.map{|k,v|
+        post_values(v)
+      }.join('')
     end
 
     def create_method name
       define_singleton_method(name) do |params = {}|
+        request name, params
+      end
+      define_method(name) do |params = {}|
         request name, params
       end
     end
