@@ -1,18 +1,4 @@
 module YandexDelivery
-
-  def request method_name, params={}
-    params = build_params method_name, params
-    result = RestClient.post "https://delivery.yandex.ru/api/last/#{method_name.to_s.camelize(:lower)}", params
-    JSON.parse(result)
-  end
-
-  def build_params method_name, params={}
-    params[:client_id] = YandexDelivery.client["id"]
-    params[:sender_id] = params[:sender_id] || YandexDelivery.senders.first["id"]
-    params[:secret_key] = Digest::MD5.hexdigest("#{post_values(params)}#{YandexDelivery.send("#{method_name}_key")}")
-    params
-  end
-
   class << self
 
     def setup
@@ -28,6 +14,11 @@ module YandexDelivery
     def build_params method_name, params={}
       params[:client_id] = YandexDelivery.client["id"]
       params[:sender_id] = params[:sender_id] || YandexDelivery.senders.first["id"]
+      params.each do |k, v|
+        if v.kind_of?(Array)
+          params[k] = v.map.with_index {|v,i| [i,v]}.to_h
+        end
+      end
       params[:secret_key] = Digest::MD5.hexdigest("#{post_values(params)}#{YandexDelivery.send("#{method_name}_key")}")
       params
     end
@@ -35,9 +26,7 @@ module YandexDelivery
     def post_values params
       return params unless params.kind_of?(Array) || params.kind_of?(Hash)
       if params.kind_of?(Array)
-        params.map{|k,v|
-          post_values(k)
-        }.join('')
+        params.map(&method(:post_values)).join('')
       else
         params.sort.map{|k,v|
           post_values(v)
@@ -94,5 +83,5 @@ module YandexDelivery
       @setting
     end
   end
-
+  
 end

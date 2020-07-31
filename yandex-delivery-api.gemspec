@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'yandex-delivery-api'
-  s.version     = '0.0.5'
-  s.date        = '2020-07-30'
+  s.version     = '0.0.6'
+  s.date        = '2020-07-31'
   s.summary     = "Yandex delivery api"
   s.description = ""
   s.authors     = ["Pavel Osetrov"]
