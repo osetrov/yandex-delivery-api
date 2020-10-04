@@ -1,3 +1,5 @@
+Этот wrapper для старой доставки. [API wrapper для новой Яндекс.доставки](https://github.com/osetrov/yandex-delivery)
+
 ## Installation
 
 Добавьте в Gemfile:
